@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Tab Manager — AI Tab Organization</title>
+<meta name="description" content="AI-powered Chrome extension for automatic tab grouping, duplicate detection, and session management.">
+<meta property="og:title" content="Smart Tab Manager">
+<meta property="og:description" content="AI-powered Chrome extension for automatic tab grouping.">
+<meta property="og:image" content="https://ttogimage-api.vercel.app/api/og?title=Smart+Tab+Manager&template=default&theme=dark&subtitle=AI-Powered+Tab+Organization">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+nav{padding:20px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a2e}
+nav .logo{font-size:20px;font-weight:700;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav a{color:#888;text-decoration:none;font-size:14px;margin-left:24px}
+nav a:hover{color:#fff}
+.hero{padding:80px 0;text-align:center}
+.hero h1{font-size:52px;font-weight:800;line-height:1.1;margin-bottom:20px;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:18px;color:#888;max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;padding:14px 32px;border-radius:12px;font-weight:600;font-size:16px;text-decoration:none;transition:all .2s;margin:6px}
+.btn-primary{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(102,126,234,.3)}
+.btn-secondary{background:#1a1a2e;color:#e0e0e0;border:1px solid #2d2d44}
+.features{padding:60px 0}
+.features h2{text-align:center;font-size:32px;margin-bottom:48px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#111122;border:1px solid #1a1a2e;border-radius:16px;padding:28px;transition:all .2s}
+.card:hover{border-color:#667eea;transform:translateY(-2px)}
+.card .icon{font-size:32px;margin-bottom:16px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:14px;color:#888}
+.pricing{padding:60px 0;text-align:center}
+.pricing h2{font-size:32px;margin-bottom:48px}
+.pricing-cards{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.pcard{background:#111122;border:1px solid #1a1a2e;border-radius:16px;padding:32px;width:280px;text-align:left;transition:all .2s}
+.pcard.pro{border-color:#667eea;background:linear-gradient(135deg,#111122,#1a1a3e)}
+.pcard h3{font-size:22px;margin-bottom:4px}
+.pcard .price{font-size:36px;font-weight:800;margin:16px 0}
+.pcard .price span{font-size:14px;color:#888;font-weight:400}
+.pcard ul{list-style:none;margin-bottom:24px}
+.pcard li{padding:6px 0;font-size:14px;color:#aaa}
+.pcard li::before{content:'✓ ';color:#667eea;font-weight:700}
+.btn-block{display:block;width:100%;text-align:center}
+.cta{padding:80px 0;text-align:center;background:linear-gradient(135deg,#111122,#1a1a2e);border-radius:24px;margin:60px 24px}
+.cta h2{font-size:28px;margin-bottom:16px}
+.cta p{color:#888;margin-bottom:24px}
+footer{padding:40px 0;text-align:center;font-size:13px;color:#555;border-top:1px solid #1a1a2e}
+footer a{color:#667eea}
+</style>
+</head>
+<body>
+<nav class="container">
+  <span class="logo">🧠 Smart Tab Manager</span>
+  <div>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://github.com/boop-TAO/smart-tab-manager">GitHub</a>
+  </div>
+</nav>
+
+<section class="hero container">
+  <h1>Your Tabs,<br>Organized by AI</h1>
+  <p>Smart Tab Manager automatically groups your browser tabs by topic — Dev, Social, News, AI, and more. Find any tab instantly, close duplicates, save sessions. All from a beautiful dark-themed popup.</p>
+  <a href="#" class="btn btn-primary">🛒 Add to Chrome</a>
+  <a href="https://github.com/boop-TAO/smart-tab-manager" class="btn btn-secondary">⭐ Star on GitHub</a>
+</section>
+
+<section id="features" class="container features">
+  <h2>Everything You Need</h2>
+  <div class="grid">
+    <div class="card"><div class="icon">🤖</div><h3>Smart Grouping</h3><p>AI categorizes tabs into 11 topics — Dev, Social, News, Video, AI, Shopping, Docs, Finance, Music, Email, Design.</p></div>
+    <div class="card"><div class="icon">🔍</div><h3>Tab Search</h3><p>Instantly find any open tab by title or URL. Click to jump directly.</p></div>
+    <div class="card"><div class="icon">🗑️</div><h3>Duplicate Detection</h3><p>One-click close all duplicate tabs. Keep your workspace clean.</p></div>
+    <div class="card"><div class="icon">💾</div><h3>Session Save</h3><p>Save and restore your entire tab layout. Free: 3 sessions. Pro: unlimited.</p></div>
+    <div class="card"><div class="icon">⌨️</div><h3>Keyboard Shortcuts</h3><p>Ctrl+Shift+A smart group · Ctrl+Shift+G domain group · Ctrl+Shift+D close dupes · Ctrl+Shift+C collapse all.</p></div>
+    <div class="card"><div class="icon">🔒</div><h3>100% Private</h3><p>All data stays on your device. No telemetry, no tracking, no cloud.</p></div>
+  </div>
+</section>
+
+<section id="pricing" class="container pricing">
+  <h2>Simple Pricing</h2>
+  <div class="pricing-cards">
+    <div class="pcard">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <ul>
+        <li>Domain grouping</li>
+        <li>Tab search</li>
+        <li>Duplicate detection</li>
+        <li>3 saved sessions</li>
+        <li>Keyboard shortcuts</li>
+      </ul>
+      <a href="#" class="btn btn-secondary btn-block">Get Started</a>
+    </div>
+    <div class="pcard pro">
+      <h3>Pro</h3>
+      <div class="price">$3.99 <span>one-time</span></div>
+      <ul>
+        <li>Everything in Free</li>
+        <li>AI Smart Grouping</li>
+        <li>Unlimited sessions</li>
+        <li>Tab usage stats</li>
+        <li>Custom categories</li>
+      </ul>
+      <a href="#" class="btn btn-primary btn-block">Upgrade to Pro</a>
+    </div>
+  </div>
+</section>
+
+<section class="container cta">
+  <h2>Ready to tame your tabs?</h2>
+  <p>Smart Tab Manager is open source and available on the Chrome Web Store.</p>
+  <a href="#" class="btn btn-primary">🛒 Add to Chrome</a>
+  <a href="https://github.com/boop-TAO/smart-tab-manager" class="btn btn-secondary">View on GitHub</a>
+</section>
+
+<footer>
+  <p>© 2026 <a href="https://github.com/boop-TAO">boop-TAO</a> · MIT License · <a href="https://github.com/boop-TAO/smart-tab-manager">Source Code</a></p>
+</footer>
+</body>
+</html>
