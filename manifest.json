@@ -1,8 +1,10 @@
 {
   "name": "Smart Tab Manager",
-  "version": "1.0.0",
-  "description": "AI-powered tab grouping and management. Auto-organize tabs by topic.",
-  "permissions": ["tabs", "tabGroups", "storage", "contextMenus"],
+  "version": "1.1.0",
+  "description": "AI-powered tab grouping and management. Auto-organize tabs, search, detect duplicates, save sessions.",
+  "author": "boop-TAO",
+  "homepage_url": "https://github.com/boop-TAO/smart-tab-manager",
+  "permissions": ["tabs", "tabGroups", "storage", "contextMenus", "alarms"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
@@ -19,6 +21,20 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "commands": {
+    "auto-group": {
+      "suggested_key": { "default": "Ctrl+Shift+G" },
+      "description": "Auto-group tabs by domain"
+    },
+    "collapse-all": {
+      "suggested_key": { "default": "Ctrl+Shift+C" },
+      "description": "Collapse all tab groups"
+    },
+    "close-duplicates": {
+      "suggested_key": { "default": "Ctrl+Shift+D" },
+      "description": "Close duplicate tabs"
+    }
   },
   "manifest_version": 3
 }
