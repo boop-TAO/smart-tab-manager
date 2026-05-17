@@ -1,6 +1,38 @@
 // Smart Tab Manager - Background Service Worker
 const STORAGE_KEY = 'tab_groups_backup';
 const STATS_KEY = 'tab_stats';
+const LICENSE_KEY = 'license';
+
+// ── License ──
+const FREE_MAX_SESSIONS = 3;
+
+async function checkLicense() {
+  const data = await chrome.storage.local.get(LICENSE_KEY);
+  const lic = data[LICENSE_KEY];
+  if (!lic || !lic.key) return { pro: false, email: null };
+  // Simple validation: key must match hash(email + secret)
+  const secret = 'stm-pro-2026';
+  const hash = await sha256(lic.email + ':' + secret);
+  const valid = lic.key === hash.substring(0, 16);
+  return { pro: valid, email: lic.email };
+}
+
+async function activateLicense(email, key) {
+  const secret = 'stm-pro-2026';
+  const expectedHash = await sha256(email + ':' + secret);
+  if (key !== expectedHash.substring(0, 16)) {
+    return { success: false, error: 'Invalid license key' };
+  }
+  await chrome.storage.local.set({ [LICENSE_KEY]: { email, key, activatedAt: Date.now() } });
+  return { success: true };
+}
+
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 // ── Auto-group tabs by domain ──
 async function autoGroupTabs() {
@@ -252,6 +284,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ ok: true, groups: count }); 
         break;
       case 'smartGroup': 
+        const proLic = await checkLicense();
+        if (!proLic.pro) {
+          sendResponse({ ok: false, error: 'pro_required', message: 'Smart grouping requires Pro' });
+          break;
+        }
         const smartCount = await smartGroupTabs(); 
         sendResponse({ ok: true, groups: smartCount }); 
         break;
@@ -260,6 +297,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ ok: true }); 
         break;
       case 'saveSession': 
+        const lic = await checkLicense();
+        const existing = await getSessions();
+        if (!lic.pro && existing.length >= FREE_MAX_SESSIONS) {
+          sendResponse({ ok: false, error: 'pro_required', message: 'Free tier limited to 3 saved sessions' });
+          break;
+        }
         const s = await saveSession(); 
         sendResponse({ ok: true, count: s.tabs.length }); 
         break;
@@ -294,6 +337,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       case 'activateTab':
         await chrome.tabs.update(msg.tabId, { active: true });
         sendResponse({ ok: true });
+        break;
+      case 'checkLicense': 
+        const licStatus = await checkLicense(); 
+        sendResponse(licStatus); 
+        break;
+      case 'activateLicense': 
+        const result = await activateLicense(msg.email, msg.key); 
+        sendResponse(result); 
         break;
       default: 
         sendResponse({ error: 'unknown action' }); 

@@ -81,8 +81,22 @@
     </button>
   </div>
 
-  <div class="footer">
+  <div class="footer" id="footerArea">
     <a href="https://github.com/boop-TAO/smart-tab-manager" target="_blank">⭐ Star on GitHub</a> · v1.1
+  </div>
+
+  <!-- Upgrade Banner -->
+  <div id="upgradeBanner" style="display:none; padding:10px 12px; background:linear-gradient(135deg,#667eea,#764ba2); text-align:center; color:#fff; font-size:11px;">
+    <strong>🔓 Upgrade to Pro</strong> — Smart grouping, unlimited sessions<br>
+    <a href="#" id="upgradeLink" style="color:#fff;text-decoration:underline;font-weight:600;">$3.99 one-time</a>
+  </div>
+
+  <!-- License Activation -->
+  <div id="licensePanel" style="display:none; padding:8px 12px;">
+    <input type="email" id="licEmail" placeholder="Email used for purchase" style="width:100%;padding:8px;border:1px solid #2d2d44;border-radius:6px;background:#12121f;color:#e0e0e0;font-size:11px;margin-bottom:4px;">
+    <input type="text" id="licKey" placeholder="License key" style="width:100%;padding:8px;border:1px solid #2d2d44;border-radius:6px;background:#12121f;color:#e0e0e0;font-size:11px;margin-bottom:4px;">
+    <button id="activateBtn" class="btn-primary" style="width:100%;font-size:11px;padding:8px;">Activate Pro</button>
+    <div id="licMsg" style="font-size:10px;color:#e74c3c;margin-top:4px;display:none;"></div>
   </div>
   <script src="popup.js"></script>
 </body>
