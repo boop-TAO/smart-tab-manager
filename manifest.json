@@ -27,6 +27,10 @@
       "suggested_key": { "default": "Ctrl+Shift+G" },
       "description": "Auto-group tabs by domain"
     },
+    "smart-group": {
+      "suggested_key": { "default": "Ctrl+Shift+A" },
+      "description": "Smart group tabs by topic (AI)"
+    },
     "collapse-all": {
       "suggested_key": { "default": "Ctrl+Shift+C" },
       "description": "Collapse all tab groups"

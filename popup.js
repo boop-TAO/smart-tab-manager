@@ -61,10 +61,20 @@ function escapeHtml(str) {
 }
 
 // ── Buttons ──
+$('smartGroup').onclick = async () => {
+  $('smartGroup').innerHTML = '<span class="icon">⏳</span> Grouping by topic...';
+  const resp = await sendAction('smartGroup');
+  $('smartGroup').innerHTML = `<span class="icon">✅</span> ${resp.groups} topic groups`;
+  setTimeout(() => {
+    $('smartGroup').innerHTML = '<span class="icon">🤖</span> Smart Group by Topic';
+  }, 2500);
+  await updateStats();
+};
+
 $('autoGroup').onclick = async () => {
   $('autoGroup').innerHTML = '<span class="icon">⏳</span> Grouping...';
-  const resp = await sendAction('autoGroup');
-  $('autoGroup').innerHTML = '<span class="icon">📦</span> Auto-Group Tabs';
+  await sendAction('autoGroup');
+  $('autoGroup').innerHTML = '<span class="icon">📦</span> Group by Domain';
   await updateStats();
 };
 
